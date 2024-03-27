@@ -1475,6 +1475,12 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			}
 		};
 
+		const schemas: typeof vscode.schemas = {
+			get hello() {
+				return 'hello!';
+			}
+		};
+
 		return <typeof vscode>{
 			version: initData.version,
 			// namespaces
@@ -1497,6 +1503,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			tests,
 			window,
 			workspace,
+			schemas,
 			// types
 			Breakpoint: extHostTypes.Breakpoint,
 			TerminalOutputAnchor: extHostTypes.TerminalOutputAnchor,

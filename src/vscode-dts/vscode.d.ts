@@ -18314,6 +18314,16 @@ declare module 'vscode' {
 		 */
 		readonly additionalCommonProperties?: Record<string, any>;
 	}
+
+	/**
+	 * A custom extension api for vscode-schemas
+	 */
+	export namespace schemas {
+		/**
+		 * a temporary api to say hello!
+		 */
+		export const hello: string;
+	}
 }
 
 /**

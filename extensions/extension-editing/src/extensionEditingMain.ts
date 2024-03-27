@@ -16,6 +16,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(registerCodeActionsProvider());
 
 	context.subscriptions.push(new ExtensionLinter());
+
+	console.log('\ntesting: ' + vscode.schemas.hello + '\n');
 }
 
 function registerPackageDocumentCompletions(): vscode.Disposable {
