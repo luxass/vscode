@@ -14,6 +14,7 @@ import { IExtHostTerminalService, WorkerExtHostTerminalService } from 'vs/workbe
 import { IExtHostTask, WorkerExtHostTask } from 'vs/workbench/api/common/extHostTask';
 import { IExtHostDebugService, WorkerExtHostDebugService } from 'vs/workbench/api/common/extHostDebugService';
 import { IExtHostSearch, ExtHostSearch } from 'vs/workbench/api/common/extHostSearch';
+import { IExtHostSchemas, ExtHostSchemas } from 'vs/workbench/api/common/extHostSchemas';
 import { IExtHostStorage, ExtHostStorage } from 'vs/workbench/api/common/extHostStorage';
 import { IExtHostTunnelService, ExtHostTunnelService } from 'vs/workbench/api/common/extHostTunnelService';
 import { IExtHostApiDeprecationService, ExtHostApiDeprecationService, } from 'vs/workbench/api/common/extHostApiDeprecationService';
@@ -58,3 +59,6 @@ registerSingleton(IExtHostSecretState, ExtHostSecretState, InstantiationType.Eag
 registerSingleton(IExtHostTelemetry, ExtHostTelemetry, InstantiationType.Eager);
 registerSingleton(IExtHostEditorTabs, ExtHostEditorTabs, InstantiationType.Eager);
 registerSingleton(IExtHostVariableResolverProvider, ExtHostVariableResolverProviderService, InstantiationType.Eager);
+
+// register the schemas service
+registerSingleton(IExtHostSchemas, ExtHostSchemas, InstantiationType.Eager);

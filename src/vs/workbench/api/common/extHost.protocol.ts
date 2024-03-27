@@ -17,6 +17,7 @@ import { URI, UriComponents, UriDto } from 'vs/base/common/uri';
 import { RenderLineNumbersType, TextEditorCursorStyle } from 'vs/editor/common/config/editorOptions';
 import { ISingleEditOperation } from 'vs/editor/common/core/editOperation';
 import { IPosition } from 'vs/editor/common/core/position';
+import { IJSONSchema } from 'vs/base/common/jsonSchema';
 import { IRange } from 'vs/editor/common/core/range';
 import { ISelection, Selection } from 'vs/editor/common/core/selection';
 import { IChange } from 'vs/editor/common/diff/legacyLinesDiffComputer';
@@ -1416,6 +1417,10 @@ export interface MainThreadSearchShape extends IDisposable {
 	$handleTelemetry(eventName: string, data: any): void;
 }
 
+export interface MainThreadSchemasShape extends IDisposable {
+	$getSchemas(): Promise<{ [id: string]: IJSONSchema }>;
+}
+
 export interface MainThreadShareShape extends IDisposable {
 	$registerShareProvider(handle: number, selector: IDocumentFilterDto[], id: string, label: string, priority: number): void;
 	$unregisterShareProvider(handle: number): void;
@@ -1825,6 +1830,10 @@ export interface ExtHostSearchShape {
 	$provideAITextSearchResults(handle: number, session: number, query: search.IRawAITextQuery, token: CancellationToken): Promise<search.ISearchCompleteStats>;
 	$provideTextSearchResults(handle: number, session: number, query: search.IRawTextQuery, token: CancellationToken): Promise<search.ISearchCompleteStats>;
 	$clearCache(cacheKey: string): Promise<void>;
+}
+
+export interface ExtHostSchemasShape {
+	$provideSchemas(): Promise<{ [id: string]: IJSONSchema }>;
 }
 
 export interface ExtHostExtensionServiceShape {
@@ -2840,6 +2849,7 @@ export const MainContext = {
 	MainThreadExtensionService: createProxyIdentifier<MainThreadExtensionServiceShape>('MainThreadExtensionService'),
 	MainThreadSCM: createProxyIdentifier<MainThreadSCMShape>('MainThreadSCM'),
 	MainThreadSearch: createProxyIdentifier<MainThreadSearchShape>('MainThreadSearch'),
+	MainThreadSchemas: createProxyIdentifier<MainThreadSchemasShape>('MainThreadSchemas'),
 	MainThreadShare: createProxyIdentifier<MainThreadShareShape>('MainThreadShare'),
 	MainThreadTask: createProxyIdentifier<MainThreadTaskShape>('MainThreadTask'),
 	MainThreadWindow: createProxyIdentifier<MainThreadWindowShape>('MainThreadWindow'),
@@ -2890,6 +2900,7 @@ export const ExtHostContext = {
 	ExtHostTerminalShellIntegration: createProxyIdentifier<ExtHostTerminalShellIntegrationShape>('ExtHostTerminalShellIntegration'),
 	ExtHostSCM: createProxyIdentifier<ExtHostSCMShape>('ExtHostSCM'),
 	ExtHostSearch: createProxyIdentifier<ExtHostSearchShape>('ExtHostSearch'),
+	ExtHostSchemas: createProxyIdentifier<ExtHostSchemasShape>('ExtHostSchemas'),
 	ExtHostTask: createProxyIdentifier<ExtHostTaskShape>('ExtHostTask'),
 	ExtHostWorkspace: createProxyIdentifier<ExtHostWorkspaceShape>('ExtHostWorkspace'),
 	ExtHostWindow: createProxyIdentifier<ExtHostWindowShape>('ExtHostWindow'),

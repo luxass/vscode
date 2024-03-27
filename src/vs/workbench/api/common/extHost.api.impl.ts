@@ -76,6 +76,7 @@ import { createExtHostQuickOpen } from 'vs/workbench/api/common/extHostQuickOpen
 import { IExtHostRpcService } from 'vs/workbench/api/common/extHostRpcService';
 import { ExtHostSCM } from 'vs/workbench/api/common/extHostSCM';
 import { IExtHostSearch } from 'vs/workbench/api/common/extHostSearch';
+import { IExtHostSchemas } from 'vs/workbench/api/common/extHostSchemas';
 import { IExtHostSecretState } from 'vs/workbench/api/common/extHostSecretState';
 import { ExtHostShare } from 'vs/workbench/api/common/extHostShare';
 import { ExtHostSpeech } from 'vs/workbench/api/common/extHostSpeech';
@@ -171,6 +172,8 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostTerminalShellIntegration = rpcProtocol.set(ExtHostContext.ExtHostTerminalShellIntegration, accessor.get(IExtHostTerminalShellIntegration));
 	const extHostDebugService = rpcProtocol.set(ExtHostContext.ExtHostDebugService, accessor.get(IExtHostDebugService));
 	const extHostSearch = rpcProtocol.set(ExtHostContext.ExtHostSearch, accessor.get(IExtHostSearch));
+	const extHostSchemas = rpcProtocol.set(ExtHostContext.ExtHostSchemas, accessor.get(IExtHostSchemas));
+
 	const extHostTask = rpcProtocol.set(ExtHostContext.ExtHostTask, accessor.get(IExtHostTask));
 	const extHostOutputService = rpcProtocol.set(ExtHostContext.ExtHostOutputService, accessor.get(IExtHostOutputService));
 	const extHostLocalization = rpcProtocol.set(ExtHostContext.ExtHostLocalization, accessor.get(IExtHostLocalizationService));
@@ -1478,6 +1481,9 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 		const schemas: typeof vscode.schemas = {
 			get hello() {
 				return 'hello!';
+			},
+			getSchemas: () => {
+				return extHostSchemas.getSchemas();
 			}
 		};
 

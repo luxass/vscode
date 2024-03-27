@@ -18323,6 +18323,13 @@ declare module 'vscode' {
 		 * a temporary api to say hello!
 		 */
 		export const hello: string;
+
+		/**
+		 * Get all registered json schemas
+		 *
+		 * @returns a promise that resolves to a map of schema ids to schema content
+		 */
+		export function getSchemas(): Thenable<{ [id: string]: any }>;
 	}
 }
 

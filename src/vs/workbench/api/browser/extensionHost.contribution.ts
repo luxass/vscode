@@ -55,6 +55,7 @@ import './mainThreadSpeech';
 import './mainThreadEditSessionIdentityParticipant';
 import './mainThreadSCM';
 import './mainThreadSearch';
+import './mainThreadSchemas';
 import './mainThreadStatusBar';
 import './mainThreadStorage';
 import './mainThreadTelemetry';

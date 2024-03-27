@@ -7,7 +7,7 @@ import * as vscode from 'vscode';
 import { PackageDocument } from './packageDocumentHelper';
 import { ExtensionLinter } from './extensionLinter';
 
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
 
 	//package.json suggestions
 	context.subscriptions.push(registerPackageDocumentCompletions());
@@ -18,6 +18,14 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(new ExtensionLinter());
 
 	console.log('\ntesting: ' + vscode.schemas.hello + '\n');
+
+	await vscode.schemas.getSchemas().then((schemas) => {
+		console.log('\n\nschemas length: ' + Object.keys(schemas).length + '\n\n');
+		console.log('\n\nschemas: ' + Object.keys(schemas) + '\n\n');
+		// schemas.forEach((schema) => {
+		// 	console.log('\n\nschema: ' + JSON.stringify(schema) + '\n\n');
+		// })
+	});
 }
 
 function registerPackageDocumentCompletions(): vscode.Disposable {
