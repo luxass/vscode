@@ -29,7 +29,6 @@ import { IExtHostAuthentication } from 'vs/workbench/api/common/extHostAuthentic
 import { ExtHostBulkEdits } from 'vs/workbench/api/common/extHostBulkEdits';
 import { ExtHostChat } from 'vs/workbench/api/common/extHostChat';
 import { ExtHostChatAgents2 } from 'vs/workbench/api/common/extHostChatAgents2';
-import { IExtHostLanguageModels } from 'vs/workbench/api/common/extHostLanguageModels';
 import { ExtHostChatVariables } from 'vs/workbench/api/common/extHostChatVariables';
 import { ExtHostClipboard } from 'vs/workbench/api/common/extHostClipboard';
 import { ExtHostEditorInsets } from 'vs/workbench/api/common/extHostCodeInsets';
@@ -58,6 +57,7 @@ import { ExtHostInteractive } from 'vs/workbench/api/common/extHostInteractive';
 import { ExtHostIssueReporter } from 'vs/workbench/api/common/extHostIssueReporter';
 import { ExtHostLabelService } from 'vs/workbench/api/common/extHostLabelService';
 import { ExtHostLanguageFeatures } from 'vs/workbench/api/common/extHostLanguageFeatures';
+import { IExtHostLanguageModels } from 'vs/workbench/api/common/extHostLanguageModels';
 import { ExtHostLanguages } from 'vs/workbench/api/common/extHostLanguages';
 import { IExtHostLocalizationService } from 'vs/workbench/api/common/extHostLocalizationService';
 import { IExtHostManagedSockets } from 'vs/workbench/api/common/extHostManagedSockets';
@@ -75,8 +75,8 @@ import { ExtHostQuickDiff } from 'vs/workbench/api/common/extHostQuickDiff';
 import { createExtHostQuickOpen } from 'vs/workbench/api/common/extHostQuickOpen';
 import { IExtHostRpcService } from 'vs/workbench/api/common/extHostRpcService';
 import { ExtHostSCM } from 'vs/workbench/api/common/extHostSCM';
-import { IExtHostSearch } from 'vs/workbench/api/common/extHostSearch';
 import { IExtHostSchemas } from 'vs/workbench/api/common/extHostSchemas';
+import { IExtHostSearch } from 'vs/workbench/api/common/extHostSearch';
 import { IExtHostSecretState } from 'vs/workbench/api/common/extHostSecretState';
 import { ExtHostShare } from 'vs/workbench/api/common/extHostShare';
 import { ExtHostSpeech } from 'vs/workbench/api/common/extHostSpeech';
@@ -86,6 +86,7 @@ import { IExtensionStoragePaths } from 'vs/workbench/api/common/extHostStoragePa
 import { IExtHostTask } from 'vs/workbench/api/common/extHostTask';
 import { ExtHostTelemetryLogger, IExtHostTelemetry, isNewAppInstall } from 'vs/workbench/api/common/extHostTelemetry';
 import { IExtHostTerminalService } from 'vs/workbench/api/common/extHostTerminalService';
+import { IExtHostTerminalShellIntegration } from 'vs/workbench/api/common/extHostTerminalShellIntegration';
 import { ExtHostTesting } from 'vs/workbench/api/common/extHostTesting';
 import { ExtHostEditors } from 'vs/workbench/api/common/extHostTextEditors';
 import { ExtHostTheming } from 'vs/workbench/api/common/extHostTheming';
@@ -109,7 +110,6 @@ import { checkProposedApiEnabled, isProposedApiEnabled } from 'vs/workbench/serv
 import { ProxyIdentifier } from 'vs/workbench/services/extensions/common/proxyIdentifier';
 import { TextSearchCompleteMessageType } from 'vs/workbench/services/search/common/searchExtTypes';
 import type * as vscode from 'vscode';
-import { IExtHostTerminalShellIntegration } from 'vs/workbench/api/common/extHostTerminalShellIntegration';
 
 export interface IExtensionRegistries {
 	mine: ExtensionDescriptionRegistry;
